@@ -57,14 +57,14 @@ public class TodoController {
   @PostMapping(value = {"/add"})
   public ModelAndView add(@ModelAttribute ToDo todo) {
     todoService.create(todo);
-    return new ModelAndView("redirect:/todo/");
+    return new ModelAndView("redirect:/");
   }
 
   @RequestMapping(value = "/", params = {"delete"})
   public String deleteTodo(final HttpServletRequest request) {
     final Integer todoIndex = Integer.valueOf(request.getParameter("delete"));
     todoService.delete(todoIndex);
-    return "redirect:/todo/";
+    return "redirect:/";
   }
 
   @GetMapping("/edit")
@@ -84,6 +84,6 @@ public class TodoController {
     todo.setIsDone(Boolean.parseBoolean(request.getParameter("isDone")));
     todo.setIsUrgent(Boolean.parseBoolean(request.getParameter("isUrgent")));
     todoService.create(todo);
-    return "redirect:/todo/";
+    return "redirect:/";
   }
 }
