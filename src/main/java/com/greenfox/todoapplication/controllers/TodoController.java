@@ -69,14 +69,14 @@ public class TodoController {
 
   @GetMapping("/edit")
   public String showEditToDo(Model model,
-                        @PathVariable(value = "edit") Integer id){
+                        @PathVariable Integer id){
     model.addAttribute("todo", todoService.getTodo(id));
     return "editTodo";
   }
 
 
   @PostMapping(value = {"/edit"})
-  public ModelAndView editToDo(@PathVariable(value = "edit") Integer id,
+  public ModelAndView editToDo(@PathVariable Integer id,
                                @ModelAttribute ToDo todo) {
     todo.setId(id);
     todoService.create(todo);
