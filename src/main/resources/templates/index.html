@@ -36,8 +36,7 @@
                     <form action="#" th:action="@{/edit}" method="post"
                           th:object="${todos}">
                         <td>
-                            <button type="button" class="btn btn-warning" name="edit"
-                                    th:value="${todo.id}">Edit</button>
+                            <a class="btn btn-default" th:href="@{edit}">edit</a>
                         </td>
                     </form>
                 </tr>
