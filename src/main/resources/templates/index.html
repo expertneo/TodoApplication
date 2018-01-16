@@ -11,13 +11,13 @@
         <h3>
             <a href="/add">Add TODO</a>
         </h3>
-        <table class="table table-striped" style="width: 60%">
+        <table style="width: 100%; height: 250px">
             <thead>
-                <tr align="center" style="background-color: greenyellow; font-size: x-large">
-                    <th text-align="center">ID</th>
-                    <th text-align="center">ACTION</th>
-                    <th text-align="center">DONE</th>
-                    <th text-align="center">URGENT</th>
+                <tr style="background-color: greenyellow; font-size: x-large">
+                    <th>ID</th>
+                    <th>ACTION</th>
+                    <th>DONE</th>
+                    <th>URGENT</th>
                 </tr>
             </thead>
 
@@ -31,14 +31,14 @@
                     <form action="#" th:action="@{/}" method="post"
                           th:object="${todos}">
                         <td>
-                            <button type="button" class="btn btn-danger" name="delete"
+                            <button type="submit" name="delete"
                                     th:value="${todo.id}">Delete</button>
                         </td>
                     </form>
                     <form action="#" th:action="@{/edit}" method="post"
                           th:object="${todos}">
                         <td>
-                            <button type="button" class="btn btn-success" name="edit"
+                            <button type="submit" name="edit"
                                     th:value="${todo.id}">Edit</button>
                         </td>
                     </form>
