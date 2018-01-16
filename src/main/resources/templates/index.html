@@ -23,7 +23,7 @@
             <tbody class="text-center">
                 <tr th:each="todo : ${todos}">
                     <td th:text="${todo.id}" />
-                    <td th:text="${todo.title}" />
+                    <td style="font-size: large" th:text="${todo.title}" />
                     <td th:text="${todo.isDone}" />
                     <td th:text="${todo.isUrgent}" />
                     <form action="#" th:action="@{/}" method="post"
