@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/todo")
+@RequestMapping("")
 public class TodoController {
 
   @Autowired
