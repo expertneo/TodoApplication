@@ -76,14 +76,10 @@ public class TodoController {
 
 
   @PostMapping(value = {"/edit"})
-  public String editToDo(Model model,
-                         @PathVariable(value = "edit") Integer id,
-                         HttpServletRequest request) {
-    ToDo todo = todoService.getTodo(id);
-    todo.setTitle(request.getParameter("topic"));
-    todo.setIsDone(Boolean.parseBoolean(request.getParameter("isDone")));
-    todo.setIsUrgent(Boolean.parseBoolean(request.getParameter("isUrgent")));
+  public ModelAndView editToDo(@PathVariable(value = "edit") Integer id,
+                               @ModelAttribute ToDo todo) {
+    todo.setId(id);
     todoService.create(todo);
-    return "redirect:/";
+    return new ModelAndView("redirect:/");
   }
 }

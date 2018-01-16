@@ -7,7 +7,7 @@
 <body>
 <h1>Bence's todo application (Early Access)</h1>
 <h2>Enter the Todo which will overwrite the one on the specified ID</h2>
-<form action="#" th:action="@{/add}" th:object="${todo}" method="post">
+<form action="#" th:action="@{/edit} + ${todo.id}" th:object="${todo}" method="post">
     <input type="text" name="topic" placeholder="Todo text..." th:field="*{title}"/>
     <div>
         Done?
@@ -17,7 +17,7 @@
         Urgent?
         <input type="checkbox" name="isUrgent" th:field="*{isUrgent}"/>
     </div>
-    <input type="submit" value="add"/>
+    <input type="submit" value="edit"/>
 </form>
 </body>
 </html>
