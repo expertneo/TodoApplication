@@ -33,12 +33,12 @@
                                     th:value="${todo.id}">Delete</button>
                         </td>
                     </form>
-                    <form action="#" th:action="@{/edit}" method="post"
-                          th:object="${todos}">
+                    <!--<form action="#" th:action="@{/edit}" method="post"-->
+                          <!--th:object="${todos}">-->
                         <td>
-                            <a class="btn btn-default" th:href="@{edit}">edit</a>
+                            <a class="btn btn-default" th:href="@{/edit} + ${todo.id}">edit</a>
                         </td>
-                    </form>
+                    <!--</form>-->
                 </tr>
             </tbody>
         </table>
