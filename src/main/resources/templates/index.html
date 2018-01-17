@@ -25,10 +25,10 @@
             <tr th:each="todo : ${todos}">
                 <td th:text="${todo.id}" />
                 <td th:if="${todo.isDone}">
-                    <span style="font-size: large" th:text="${todo.title}"></span>
+                    <del><span style="font-size: large" th:text="${todo.title}"></span></del>
                 </td>
                 <td th:unless="${todo.isDone}">
-                    <del><span style="font-size: large" th:text="${todo.title}"></span></del>
+                    <span style="font-size: large" th:text="${todo.title}"></span>
                 </td>
                 <td th:if="${todo.isDone}">
                     <span class="glyphicon glyphicon-ok"></span>
