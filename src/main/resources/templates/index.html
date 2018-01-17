@@ -5,43 +5,57 @@
         <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
         <title>TODO app Early Access</title>
     </head>
-    <body>
+    <body style="background: url(http://eskipaper.com/images/paper-background-4.jpg)">
+    <div class="container" align="center">
         <h1>Bence's todo application (Early Access)</h1>
         <h2>TODOS FOR TODAY:</h2>
         <h3>
-            <a href="/add">Add TODO</a>
+            <a href="/add" class="btn btn-primary btn-lg btn-block" style="width:70%">Add TODO</a>
         </h3>
         <table class="table table-striped" style="width: 70%; height: 200px">
             <thead style="text-align: center" class="text-center">
-                <tr style="font-size: x-large">
-                    <th style="text-align: center">ID</th>
-                    <th style="text-align: center">ACTION</th>
-                    <th style="text-align: center">DONE</th>
-                    <th style="text-align: center">URGENT</th>
-                </tr>
+            <tr style="font-size: x-large">
+                <th style="text-align: center">ID</th>
+                <th style="text-align: center">ACTION</th>
+                <th style="text-align: center">DONE</th>
+                <th style="text-align: center">URGENT</th>
+            </tr>
             </thead>
             <tbody class="text-center">
-                <tr th:each="todo : ${todos}">
-                    <td th:text="${todo.id}" />
-                    <td style="font-size: large" th:text="${todo.title}" />
-                    <td th:text="${todo.isDone}" />
-                    <td th:text="${todo.isUrgent}" />
-                    <form action="#" th:action="@{/}" method="post"
-                          th:object="${todos}">
-                        <td>
-                            <button type="submit" class="btn btn-danger" name="delete"
-                                    th:value="${todo.id}">Delete</button>
-                        </td>
-                    </form>
-                    <!--<form action="#" th:action="@{/edit}" method="post"-->
-                          <!--th:object="${todos}">-->
-                        <td>
-                            <a class="btn btn-default" th:href="@{/edit/} + ${todo.id}">edit</a>
-                        </td>
-                    <!--</form>-->
-                </tr>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.id}" />
+                <td th:if="${todo.isDone}">
+                    <span style="font-size: large" th:text="${todo.title}"></span>
+                </td>
+                <td th:unless="${todo.isDone}">
+                    <del><span style="font-size: large" th:text="${todo.title}"></span></del>
+                </td>
+                <td th:if="${todo.isDone}">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td th:unless="${todo.isDone}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <td th:if="${todo.isUrgent}">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </td>
+                <td th:unless="${todo.isUrgent}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </td>
+                <form action="#" th:action="@{/}" method="post"
+                      th:object="${todos}">
+                    <td>
+                        <button type="submit" class="btn btn-danger" name="delete"
+                                th:value="${todo.id}">Delete</button>
+                    </td>
+                </form>
+                <td>
+                    <a class="btn btn-default" th:href="@{/edit/} + ${todo.id}">edit</a>
+                </td>
+            </tr>
             </tbody>
         </table>
+    </div>
         <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
         <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     </body>
