@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Bence's todo application (Early Access)</h1>
-        <h2>Enter the Todo which will overwrite the one on the specified ID</h2>
+        <h2>EDITING</h2>
         <form action="#" th:action="@{/edit/} + ${todo.id} + @{/save}" th:object="${todo}"
               method="post">
             <input type="text" name="topic" placeholder="Todo text..." th:field="*{title}"/>
