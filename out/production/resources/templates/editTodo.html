@@ -9,7 +9,9 @@
         <div class="container" align="center">
             <h1>Bence's todo application (Early Access)</h1>
             <h2>EDITING</h2>
-            <form action="#" th:action="@{/edit/} + ${todo.id} + @{/save}" th:object="${todo}"
+            <form action="#"
+                  th:action="@{/users/} + ${userName} + @{/edit/} + ${todo.id} + @{/save}"
+                  th:object="${todo}"
                   method="post">
                 <input type="text" name="topic" class="form-control" placeholder="Todo text..." th:field="*{title}"/>
                 <div>

@@ -1,5 +1,6 @@
 package com.greenfox.todoapplication.services;
 
+import com.greenfox.todoapplication.models.Assignee;
 import com.greenfox.todoapplication.models.ToDo;
 import org.springframework.stereotype.Service;
 
@@ -15,4 +16,12 @@ public interface TodoService {
   void setDone(Integer id, boolean input);
   void setUrgent(Integer id, boolean input);
   void delete(Integer id);
+
+  ToDo findByTitle(String title);
+  List<ToDo> findByIsUrgentFalse();
+  List<ToDo> findByIsUrgentTrue();
+  List<ToDo> findByIsDoneFalse();
+  List<ToDo> findByIsDoneTrue();
+  List<ToDo> findByAssignee(Assignee assignee);
+  List<ToDo> findByAssigneeName(String input);
 }

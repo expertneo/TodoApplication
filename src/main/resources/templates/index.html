@@ -2,15 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
         <title>TODO app Early Access</title>
     </head>
     <body style="background: url(http://eskipaper.com/images/paper-background-4.jpg)">
     <div class="container" align="center">
         <h1>Bence's todo application (Early Access)</h1>
-        <h2>TODOS FOR TODAY:</h2>
+        <h2 th:text="${userName} + 's TODOs'"></h2>
         <h3>
-            <a href="/add" class="btn btn-primary btn-lg btn-block" style="width:70%">Add TODO</a>
+            <a th:href="@{'/users/' + ${userName} + '/add'}"
+                class="btn btn-primary btn-lg btn-block"
+                style="width:70%">Add
+                TODO</a>
         </h3>
         <table class="table table-striped" style="width: 70%; height: 200px">
             <thead style="text-align: center" class="text-center">
@@ -42,7 +45,7 @@
                 <td th:unless="${todo.isUrgent}">
                     <span class="glyphicon glyphicon-remove"></span>
                 </td>
-                <form action="#" th:action="@{/}" method="post"
+                <form action="#" th:action="@{/users/} + ${userName}" method="post"
                       th:object="${todos}">
                     <td>
                         <button type="submit" class="btn btn-danger" name="delete"
@@ -50,13 +53,14 @@
                     </td>
                 </form>
                 <td>
-                    <a class="btn btn-default" th:href="@{/edit/} + ${todo.id}">edit</a>
+                    <a class="btn btn-default"
+                       th:href="@{/users/} + ${userName} + @{/edit/} + ${todo.id}">edit</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-        <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
-        <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+        <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     </body>
 </html>

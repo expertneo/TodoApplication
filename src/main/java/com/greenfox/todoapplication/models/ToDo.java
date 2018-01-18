@@ -1,16 +1,24 @@
 package com.greenfox.todoapplication.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Calendar;
 
 @Entity
+@Table
 public class ToDo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
+
+  @Temporal(TemporalType.TIMESTAMP)
+  private Calendar createdAt;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "assignee_id")
+  private Assignee assignee;
+
   private String title;
   private  boolean isUrgent;
   private boolean isDone;
@@ -18,10 +26,11 @@ public class ToDo {
   public ToDo() {
   }
 
-  public ToDo(String title, boolean isUrgent, boolean isDone) {
+  public ToDo(String title, boolean isUrgent, boolean isDone, Assignee assignee) {
     this.title = title;
     this.isUrgent = isUrgent;
     this.isDone = isDone;
+    this.assignee = assignee;
   }
 
   public Integer getId() {
@@ -54,5 +63,13 @@ public class ToDo {
 
   public void setIsDone(boolean done) {
     isDone = done;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }

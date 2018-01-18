@@ -1,5 +1,6 @@
 package com.greenfox.todoapplication.services;
 
+import com.greenfox.todoapplication.models.Assignee;
 import com.greenfox.todoapplication.models.ToDo;
 import com.greenfox.todoapplication.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class TodoServiceDBImpl implements TodoService {
   @Autowired
   TodoRepository todoRepository;
 
+  //OK
   @Override
   public List<ToDo> getAllTodos() {
     List<ToDo> todos = new ArrayList<>();
@@ -21,11 +23,13 @@ public class TodoServiceDBImpl implements TodoService {
     return todos;
   }
 
+  //OK
   @Override
   public ToDo getTodo(Integer id) {
     return todoRepository.findOne(id);
   }
 
+  //OK
   @Override
   public void create(ToDo todo) {
     todoRepository.save(todo);
@@ -48,6 +52,41 @@ public class TodoServiceDBImpl implements TodoService {
   @Override
   public void delete(Integer id) {
     todoRepository.delete(id);
+  }
+
+  @Override
+  public ToDo findByTitle(String title) {
+    return todoRepository.findByTitle(title);
+  }
+
+  @Override
+  public List<ToDo> findByIsUrgentFalse() {
+    return todoRepository.findByIsUrgentFalse();
+  }
+
+  @Override
+  public List<ToDo> findByIsUrgentTrue() {
+    return todoRepository.findByIsUrgentTrue();
+  }
+
+  @Override
+  public List<ToDo> findByIsDoneFalse() {
+    return todoRepository.findByIsDoneFalse();
+  }
+
+  @Override
+  public List<ToDo> findByIsDoneTrue() {
+    return todoRepository.findByIsDoneTrue();
+  }
+
+  @Override
+  public List<ToDo> findByAssignee(Assignee assignee) {
+    return todoRepository.findByAssignee(assignee);
+  }
+
+  @Override
+  public List<ToDo> findByAssigneeName(String input) {
+    return todoRepository.findByAssigneeName(input);
   }
 
   @Override
