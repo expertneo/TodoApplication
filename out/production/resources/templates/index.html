@@ -8,13 +8,29 @@
     <body style="background: url(http://eskipaper.com/images/paper-background-4.jpg)">
     <div class="container" align="center">
         <h1>Bence's todo application (Early Access)</h1>
-        <h2 th:text="${userName} + 's TODOs'"></h2>
+        <h2 th:text="${userName} + '\'s TODOs'"></h2>
         <h3>
             <a th:href="@{'/users/' + ${userName} + '/add'}"
                 class="btn btn-primary btn-lg btn-block"
                 style="width:70%">Add
                 TODO</a>
         </h3>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control"  placeholder="Search" />
+                        <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <table class="table table-striped" style="width: 70%; height: 200px">
             <thead style="text-align: center" class="text-center">
             <tr style="font-size: x-large">
@@ -59,6 +75,8 @@
             </tr>
             </tbody>
         </table>
+        <a th:href="@{'/'}"
+           class="btn btn-link btn-xs">Back</a>
     </div>
         <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
         <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
